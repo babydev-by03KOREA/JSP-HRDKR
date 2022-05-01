@@ -4,9 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>footer</title>
+<style>
+	footer {
+		position :fixed;
+		bottom: 0px;
+		width: 100%;
+		height: 30px;
+		text-align: center;
+		background-color: black;
+		color: white;
+	}
+</style>
 </head>
 <body>
-
+	<footer>
+		Copyright &copy; 2018 All right reserved KWAIHS
+	</footer>
 </body>
 </html>
