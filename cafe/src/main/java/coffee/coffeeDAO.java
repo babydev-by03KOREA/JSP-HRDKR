@@ -40,12 +40,9 @@ public class coffeeDAO {
 		ResultSet rs = null;
 		try {
 			con = DBConnect.getConncetion();
-			sql = "SELECT  *";
-			sql += " FROM TBL_SALELIST_01";
-			sql += " INNER JOIN TBL_PRODUCT_01";
-			sql += " ON TBL_SALELIST_01.PCODE = TBL_PRODUCT_";
-			sql += " FROM TBL_SHOP_01";
-			sql += " INNER JOIN TBL_SALELIST_01";
+			sql = "SELECT TBL_SALELIST_01.*, TBL_PRODUCT_01.NAME AS PRODUCT, TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT AS COLSPAN";
+			sql += " FROM TBL_SALELIST_01, TBL_PRODUCT_01, TBL_SHOP_01";
+			sql += " WHERE TBL_SALELIST_01.SCODE = TBL_SHOP_01.SCODE AND TBL_PRODUCT_01.PCODE = TBL_SALELIST_01.PCODE";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -55,6 +52,9 @@ public class coffeeDAO {
 				cdto.setSaledate(rs.getString(3));
 				cdto.setScode(rs.getString(4));
 				cdto.setAmount(rs.getInt(5));
+				/*
+				 * cdto.setProduct(rs.getString(6)); cdto.setColspan(rs.getInt(7));
+				 */
 				list.add(cdto);
 			}
 		}catch(Exception e){

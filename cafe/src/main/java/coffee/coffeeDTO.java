@@ -10,6 +10,9 @@ public class coffeeDTO {
 	private int saleno;
 	private String saledate;
 	private int amount; 
+	private String product;
+	
+	private int colspan;
 	
 	public String getPcode() {
 		return pcode;
@@ -59,6 +62,17 @@ public class coffeeDTO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	public int getColspan() {
+		return colspan;
+	}
+	public void setColspan(int colspan) {
+		this.colspan = colspan;
+	}
 	
 }
