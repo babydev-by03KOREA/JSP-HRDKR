@@ -45,11 +45,11 @@
 				<td align="left" >
 					<select name="pcode" class="tdd">
 						<option value="null">--상품코드를 선택하세요--</option>
-						<option value="AA01">A001</option>
-						<option value="AA02">A002</option>
-						<option value="AA03">A003</option>
-						<option value="AA04">A004</option>
-						<option value="AA05">A005</option>
+						<option value="AA01">AA01</option>
+						<option value="AA02">AA02</option>
+						<option value="AA03">AA03</option>
+						<option value="AA04">AA04</option>
+						<option value="AA05">AA05</option>
 					</select>
 					
 				</td>

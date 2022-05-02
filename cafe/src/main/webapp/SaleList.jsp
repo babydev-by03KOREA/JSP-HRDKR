@@ -38,7 +38,8 @@
 			try {
 				con = DBConnect.getConncetion();
 				sql = "SELECT TBL_SALELIST_01.SALENO, TBL_SALELIST_01.PCODE, TBL_SALELIST_01.SALEDATE, TBL_SALELIST_01.SCODE, TBL_SALELIST_01.AMOUNT,";
-				sql += " TBL_PRODUCT_01.NAME AS PRODUCT, TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT AS COLSPAN";
+				sql += " TBL_PRODUCT_01.NAME AS PRODUCT, TO_CHAR(TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT, 'fm999,999,999,999') AS COLSPAN";
+				/* sql += " ,SUBSTR(TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT,1,3) AS NOGADA1, SUBSTR(TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT,4,3) AS NOGADA2"; */
 				sql += " FROM TBL_SALELIST_01, TBL_PRODUCT_01";
 				sql += " WHERE TBL_PRODUCT_01.PCODE = TBL_SALELIST_01.PCODE";
 				pstmt = con.prepareStatement(sql);
@@ -64,9 +65,33 @@
 					<td><%= rs.getString("PCODE") %></td>
 					<td><%= rs.getDate("SALEDATE") %></td>
 					<td><%= rs.getString("SCODE") %></td>
+					<td>
+						<%-- 미해결 <%
+							String PD = rs.getString("PRODUCT");
+							String S = "마끼아또";
+							String SP = "캬라멜마끼아또";
+							if (PD == S){
+								out.print(SP);
+							} else {
+								out.print(PD);
+							}
+						%> --%>
+						<%= rs.getString("PRODUCT") %>
+					</td>
 					<td><%= rs.getInt("AMOUNT") %></td>
-					<td><%= rs.getString("PRODUCT") %></td>
-					<td><%= rs.getInt("COLSPAN") %></td> 
+					<td>
+						<%-- 노가다식 방법 <%
+							String NOGADA1 = rs.getString("NOGADA1");
+							String NOGADA2 = rs.getString("NOGADA2");
+							String NOGADA = NOGADA1 + "," + NOGADA2;
+							out.print(NOGADA);
+						%> --%>
+						<%= rs.getString("COLSPAN") %> 
+						<%-- 
+							혹시 getString으로 변환하면 될까? OK-가능함
+							TO_CHAR의 경우, CHARACTER형으로 받아야만한다. 
+						--%>
+					</td> 
 				</tr>
 		<%
 				}
