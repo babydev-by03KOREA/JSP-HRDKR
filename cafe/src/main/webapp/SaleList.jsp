@@ -66,17 +66,20 @@
 					<td><%= rs.getDate("SALEDATE") %></td>
 					<td><%= rs.getString("SCODE") %></td>
 					<td>
-						<%-- 미해결 <%
+						<%
 							String PD = rs.getString("PRODUCT");
-							String S = "마끼아또";
-							String SP = "캬라멜마끼아또";
-							if (PD == S){
-								out.print(SP);
-							} else {
+							String MT = "마끼아또";
+							String CMT = "캬라멜마끼아또";
+							// 문자열의 경우, '=='으로 값을 비교할 수 없습니다.
+							// 위에 String으로 원하는 값을 선언 후, equals(비교값)으로 비교하세요.
+							// *선배의 Tip!* Java의 내장객체를 충분히 사용하세요.
+							if (PD.equals(MT) ){
+								out.print(CMT);
+							}else{
 								out.print(PD);
 							}
-						%> --%>
-						<%= rs.getString("PRODUCT") %>
+						%> 
+						<%-- <%= rs.getString("PRODUCT") %> --%>
 					</td>
 					<td><%= rs.getInt("AMOUNT") %></td>
 					<td>
