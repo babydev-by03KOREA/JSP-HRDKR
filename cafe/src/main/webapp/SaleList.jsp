@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="dbms.DBConnect" import="coffee.coffeeDAO" import="coffee.coffeeDTO"
-    import="java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="dbms.DBConnect" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +31,18 @@
 	<section>
 		<%
 			request.setCharacterEncoding("UTF-8");
-			coffeeDAO cdao = new coffeeDAO();
-			ArrayList<coffeeDTO> list = cdao.coffeeList();
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			ResultSet rs = null;
+			try {
+				con = DBConnect.getConncetion();
+				sql = "SELECT TBL_SALELIST_01.SALENO, TBL_SALELIST_01.PCODE, TBL_SALELIST_01.SALEDATE, TBL_SALELIST_01.SCODE, TBL_SALELIST_01.AMOUNT,";
+				sql += " TBL_PRODUCT_01.NAME AS PRODUCT, TBL_PRODUCT_01.COST * TBL_SALELIST_01.AMOUNT AS COLSPAN";
+				sql += " FROM TBL_SALELIST_01, TBL_PRODUCT_01";
+				sql += " WHERE TBL_PRODUCT_01.PCODE = TBL_SALELIST_01.PCODE";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
 		%>
 		<h2><b>판매현황</b></h2><br/>
 		<form>
@@ -48,19 +57,29 @@
 					<th>총판매액</th>
 				</tr>
 		<%
-			for(int i=1; i<list.size(); i++){
-				coffeeDTO cdto = list.get(i);
+			while(rs.next()) {
 		%>
 				<tr>
-					<td><%= cdto.getSaleno() %></td>
-					<td><%= cdto.getPcode() %></td>
-					<td><%= cdto.getSaledate() %></td>
-					<td><%= cdto.getScode() %></td>
-					<td><%= cdto.getAmount() %></td>
-					<%-- <td><%= cdto.getName() %></td>
-					<td><%= cdto.getSaledate() %></td> --%>
+					<td><%= rs.getInt("SALENO") %></td>
+					<td><%= rs.getString("PCODE") %></td>
+					<td><%= rs.getDate("SALEDATE") %></td>
+					<td><%= rs.getString("SCODE") %></td>
+					<td><%= rs.getInt("AMOUNT") %></td>
+					<td><%= rs.getString("PRODUCT") %></td>
+					<td><%= rs.getInt("COLSPAN") %></td> 
 				</tr>
 		<%
+				}
+			}catch(Exception e){
+				System.out.println("You're SaleList Commands was denied for "+e);
+			}finally {
+				try {
+					if(con != null) {con.close();}
+					if(pstmt != null) {pstmt.close();}
+					if(rs != null) {rs.close();}
+				} catch (SQLException e){
+					System.out.println("SQLException "+e);
+				}
 			}
 		%>
 			</table>
