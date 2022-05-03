@@ -29,21 +29,22 @@
 		width: 300px;
 	}
 </style>
+<script src="validation.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>판매등록</b></h2><br/>
-		<form action="salePro.jsp" method="post">
+		<form action="salePro.jsp" method="post" onsubmit="return validate1	();">
 		<table border="1">
 			<tr>
 				<td>판매번호</td>
-				<td align="left"><input type="text" class="tdd" name="saleno" placeholder="판매번호를 입력하세요(숫자)">ex) 100001</td>
+				<td align="left"><input type="text" class="tdd" id = "saleno" name="saleno" placeholder="판매번호를 입력하세요(숫자)">ex) 100001</td>
 			</tr>
 			<tr>
 				<td>상품코드</td>
 				<td align="left" >
-					<select name="pcode" class="tdd">
+					<select name="pcode" class="tdd" id = "pcode">
 						<option value="null">--상품코드를 선택하세요--</option>
 						<option value="AA01">AA01</option>
 						<option value="AA02">AA02</option>
@@ -56,12 +57,12 @@
 			</tr>
 			<tr>
 				<td>판매날짜</td>
-				<td align="left"><input type="text" class="tdd" name="saledate" placeholder="'/'없이 작성하세요.">ex) 20220501</td>
+				<td align="left"><input type="text" id="saledate" class="tdd" name="saledate" placeholder="'/'없이 작성하세요.">ex) 20220501</td>
 			</tr>
 			<tr>
 				<td>매장코드</td>
 				<td align="left">
-				<select name="scode" class="tdd">
+				<select name="scode" id="scode" class="tdd">
 					<option value="null">--매장코드를 선택하세요--</option>
 					<option value="S001">S001</option>
 					<option value="S002">S002</option>
@@ -73,7 +74,7 @@
 			</tr>
 			<tr>
 				<td>판매수량</td>
-				<td align="left"><input type="text" class="tdd" name="amount">10개 단위로 입력하세요.</td>
+				<td align="left"><input id="amount" type="text" class="tdd" name="amount">10개 단위로 입력하세요.</td>
 			</tr>
 			<tr>
 				<td colspan="2">
