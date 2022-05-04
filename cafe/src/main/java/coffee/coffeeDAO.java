@@ -11,7 +11,7 @@ public class coffeeDAO {
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
-			con = DBConnect.getConncetion();
+			con = DBConnect.getConnection();
 			sql = "INSERT INTO TBL_SALELIST_01 VALUES(?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, data.getSaleno());

@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/cafe/header.jsp"></jsp:include>
+	<jsp:include page="/Cafe/header.jsp"></jsp:include>
 	<section>
 		<%
 			request.setCharacterEncoding("UTF-8");
@@ -36,7 +36,7 @@
 			String sql = null;
 			ResultSet rs = null;
 			try {
-				con = DBConnect.getConncetion();
+				con = DBConnect.getConnection();
 				sql = "SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MM:SS') AS NOWC, TO_CHAR(SYSDATE, 'YYYY-MM-DD') AS NOWD,";
 				sql += " TO_CHAR(SYSDATE, 'AM HH12:MI:SS') AS NOWT, TO_DATE(SYSDATE) AS NOW,";
 				sql += " TO_CHAR(SYSDATE, 'YYYY MONTH DAY','NLS_DATE_LANGUAGE = JAPANESE') AS JNOW FROM DUAL";
@@ -80,6 +80,6 @@
 			</table>
 		</form>
 	</section>
-	<jsp:include page="/cafe/footer.jsp"></jsp:include>
+	<jsp:include page="/Cafe/footer.jsp"></jsp:include>
 </body>
 </html>

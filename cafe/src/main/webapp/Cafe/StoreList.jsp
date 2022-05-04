@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/cafe/header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>매장별 판매액</b></h2><br/>
 		<form>
@@ -81,6 +81,6 @@
 			</table>
 		</form>
 	</section>
-	<jsp:include page="/cafe/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
