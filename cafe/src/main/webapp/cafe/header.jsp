@@ -37,7 +37,7 @@
 		<a href="sale.jsp">판매등록</a> &nbsp; &nbsp;
 		<a href="SaleList.jsp">판매현황</a> &nbsp; &nbsp;
 		<a href="#">매장판매액</a> &nbsp; &nbsp;
-		<a href="#">상품별판매액</a> &nbsp; &nbsp;
+		<a href="CountList.jsp">상품별판매액</a> &nbsp; &nbsp;
 		<a href="index.jsp">홈으로</a> &nbsp; &nbsp;
 	</nav>
 </body>

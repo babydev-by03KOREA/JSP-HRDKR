@@ -47,7 +47,8 @@
 				try{
 					Class.forName("oracle.jdbc.OracleDriver");
 					con = DriverManager.getConnection(url,pid,pwd);
-					sql = "SELECT tp.pcode, tp.name, to_char(sum(tsa.amount*tp.cost),'999,999') ALLCOUNT";
+					// sql Table 에 AS 붙이지 말고 '(공백)'주고 Alias 작성해주세요. 칼럼명에는 가능합니다.
+					sql = "SELECT tp.pcode, tp.name, to_char(sum(tsa.amount*tp.cost),'fm999,999,999,999') AS ALLCOUNT";
 				    sql += " FROM TBL_SHOP_01 tsh INNER JOIN TBL_SALELIST_01 tsa ";
 				    sql += " ON tsh.scode = tsa.scode INNER JOIN TBL_PRODUCT_01 tp ";
 					sql += " ON tp.pcode = tsa.pcode GROUP BY tp.pcode, tp.name";
