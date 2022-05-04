@@ -34,9 +34,9 @@
 		매장별 커피 판매관리 ver 1.0
 	</header>
 	<nav>
-		<a href="sale.jsp">판매등록</a> &nbsp; &nbsp;
+		<a href="SaleInsert.jsp">판매등록</a> &nbsp; &nbsp;
 		<a href="SaleList.jsp">판매현황</a> &nbsp; &nbsp;
-		<a href="#">매장판매액</a> &nbsp; &nbsp;
+		<a href="StoreList.jsp">매장판매액</a> &nbsp; &nbsp;
 		<a href="CountList.jsp">상품별판매액</a> &nbsp; &nbsp;
 		<a href="index.jsp">홈으로</a> &nbsp; &nbsp;
 	</nav>

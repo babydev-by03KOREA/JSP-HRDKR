@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/Cafe/header.jsp"></jsp:include>
+	<jsp:include page="/cafe/header.jsp"></jsp:include>
 	<section>
 		<%
 			request.setCharacterEncoding("UTF-8");
@@ -80,6 +80,6 @@
 			</table>
 		</form>
 	</section>
-	<jsp:include page="/Cafe/footer.jsp"></jsp:include>
+	<jsp:include page="/cafe/footer.jsp"></jsp:include>
 </body>
 </html>
