@@ -35,7 +35,8 @@
 		(과정평가형 산업기사) 환자 검사 프로그램
 	</header>
 	<nav>
-		<a href="#">환자조회</a> &nbsp; &nbsp;
+		<a href="PatientList.jsp">환자조회</a> &nbsp; &nbsp;
+		<a href="PatientInsert.jsp">환자등록</a> &nbsp; &nbsp;
 		<a href="#">검사결과입력</a> &nbsp; &nbsp;
 		<a href="#">검사결과조회</a> &nbsp; &nbsp;
 		<a href="#">지역별검사건수</a> &nbsp; &nbsp;

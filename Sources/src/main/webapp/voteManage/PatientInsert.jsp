@@ -28,7 +28,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 	<h2><b>환자정보 입력</b></h2><br/>
-	<form action="Patient_InsertPro.jsp" method="post">
+	<form action="PatientInsertPro.jsp" method="post">
 		<table border="1">
 			<tr>
 				<td>환자 코드</td>

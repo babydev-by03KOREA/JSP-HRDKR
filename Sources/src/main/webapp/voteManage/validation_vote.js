@@ -39,7 +39,7 @@ function Vote_Validate1() {
 		return false;
 	}
 	
-	if (p_birth.value <= 9){
+	if (p_birth.value < 8){
 		alert('주민등록상의 환자 생년월일 8자리를 입력해주세요.');
 		p_birth.focus();
 		return false;
@@ -82,7 +82,7 @@ function Vote_Validate1() {
 	}
 	
 	// p_tel3.value <=5 Error
-/*	if (p_tel3.value <= 5){
+	/*	if (p_tel3.value <= 5){
 		alert('전화번호 세번째칸은 4자리를 넘어갈 수 없습니다.');
 		p_tel3.focus();
 		return false;
