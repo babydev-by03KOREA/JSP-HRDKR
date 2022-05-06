@@ -29,12 +29,13 @@
 			sql = "INSERT INTO TBL_RESULT_202004 VALUES(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			// sql문 실행을 위해 꼭 sql문 아래에 넣어주세요.
-			pstmt.setString(1, P_NO);
-			pstmt.setString(2, T_CODE);
-			pstmt.setString(3, T_SDATE);
-			pstmt.setString(4, T_STATUS);
-			pstmt.setString(5, T_LDATE);
-			pstmt.setString(6, T_RESULT);
+			// 살면서 가장 어이없는 에러가 나왔어요.. 값 넘길때 TRIM으로 공백제거 제발.. 미리 사전에 방지하도록해요..
+			pstmt.setString(1, P_NO.trim());
+			pstmt.setString(2, T_CODE.trim());
+			pstmt.setString(3, T_SDATE.trim());
+			pstmt.setString(4, T_STATUS.trim());
+			pstmt.setString(5, T_LDATE.trim());
+			pstmt.setString(6, T_RESULT.trim());
 			pstmt.executeUpdate();
 			
 		}catch(Exception e){

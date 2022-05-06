@@ -23,7 +23,9 @@
 		justify-content: center;
 		text-align: center;
 	}
-	
+	th, td{
+		width:100px;
+	}
 </style>
 </head>
 <body>
@@ -58,7 +60,7 @@
 				// APPEND() 객체가 아닌 += 사용 시, 띄어쓰기랑 콤마(,) 꼭 확인하세요!!!!!
 				// TABLE_NAME.COLUMN_NAME
 				sql = "SELECT TBL_RESULT_202004.P_NO, TBL_PATIENT_202004.P_NAME, TBL_RESULT_202004.T_CODE,";
-				sql += "TBL_RESULT_202004.T_SDATE, TBL_RESULT_202004.T_STATUS, TBL_RESULT_202004.T_LDATE, TBL_RESULT_202004.T_RESULT";
+				sql += "TBL_RESULT_202004.T_SDATE, TRIM(TBL_RESULT_202004.T_STATUS) AS STATUS, TBL_RESULT_202004.T_LDATE, TRIM(TBL_RESULT_202004.T_RESULT) AS RESULT";
 				sql += " FROM TBL_RESULT_202004";
 				sql += " INNER JOIN TBL_PATIENT_202004";
 				sql += " ON TBL_RESULT_202004.P_NO = TBL_PATIENT_202004.P_NO";
@@ -99,7 +101,9 @@
 					<td><%= rs.getDate("T_SDATE") %></td>
 					<td>
 					<%
-						String stmt = rs.getString("T_STATUS");
+						// 값이 안들어온다 싶으면 TRIM으로 해당 칼럼명을 한번 감싸서 공백을 제거하세요.
+						// 이거때문에 한시간 버렸습니다.... INSERT할때 .trim()으로 사전에 불상사를 제거하시고..
+						String stmt = rs.getString("STATUS");
 						String ING = "1";
 						String FIN = "2";
 						String KING = "검사 중";
@@ -107,7 +111,7 @@
 						
 						if(stmt.equals(ING)){
 							out.println(KING);
-						}else if(stmt.equals(ING)){
+						}else if(stmt.equals(FIN)){
 							out.println(KFIN);
 						}
 					%>
@@ -115,18 +119,19 @@
 					<td><%= rs.getDate("T_LDATE") %></td>
 					<td>
 					<% 
-						String rsx = rs.getString("T_RESULT");
+						String rsx = rs.getString("RESULT");
 						String NO = "X";
 						String Positive = "P";
 						String Negative = "N";
 						String KNO = "미입력";
 						String KPositive = "양성";
 						String KNegative = "음성";
-						if(rsx.equals(NO)){
+						// equals() - 다음과 같은 방법으로도 사용 가능합니다. 
+						if(NO.equals(rsx)){
 							out.println(KNO);
-						}else if(rsx.equals(Positive)){
+						}else if(Positive.equals(rsx)){
 							out.println(KPositive);
-						}else if(rsx.equals(Negative)){
+						}else if(Negative.equals(rsx)){
 							out.println(KNegative);
 						}
 					%>
