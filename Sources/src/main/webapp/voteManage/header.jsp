@@ -37,7 +37,7 @@
 	<nav>
 		<a href="PatientList.jsp">환자조회</a> &nbsp; &nbsp;
 		<a href="PatientInsert.jsp">환자등록</a> &nbsp; &nbsp;
-		<a href="#">검사결과입력</a> &nbsp; &nbsp;
+		<a href="ResultInsert.jsp">검사결과입력</a> &nbsp; &nbsp;
 		<a href="#">검사결과조회</a> &nbsp; &nbsp;
 		<a href="#">지역별검사건수</a> &nbsp; &nbsp;
 		<a href="index.jsp">홈으로</a> &nbsp; &nbsp;

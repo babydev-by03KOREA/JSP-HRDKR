@@ -118,7 +118,7 @@ function validate(){
 		return false;
 	}
 	
-	if(T_CODE.value === "value"){
+	if(T_CODE.value === "null"){
 		alert('검사명을 선택하세요!');
 		T_CODE.focus();
 		return false;

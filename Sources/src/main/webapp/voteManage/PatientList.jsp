@@ -60,15 +60,14 @@
 				<td><%= rs.getString("P_BIRTH") %></td>
 				<td>
 					<%
-						String Male = rs.getString("P_GENDER");
-						String FMale = rs.getString("P_GENDER");
+						String gender = rs.getString("P_GENDER");
 						String EMale = "M";
 						String EFMale = "F";
 						String KMale = "남";
 						String KFMale = "여";
-						if(Male.equals(EMale)){
+						if(gender.equals(EMale)){
 							out.println(KMale);
-						}else if(FMale.equals(EFMale)){
+						}else if(gender.equals(EFMale)){
 							out.println(KFMale);
 						}
 					%>
@@ -96,10 +95,10 @@
 						if(AREACODE.equals(SNCode)){
 							out.println(SELCode);
 						}else if(AREACODE.equals(KYNCode)){
-							out.println(KYNCode);
-						}else if(AREACODE.equals(KWGCode)){
+							out.println(KYGCode);
+						}else if(AREACODE.equals(KWNCode)){
 							out.println(KWGCode);
-						}else if(AREACODE.equals(TEGCode)){
+						}else if(AREACODE.equals(TENCode)){
 							out.println(TEGCode);
 						}
 					%>
