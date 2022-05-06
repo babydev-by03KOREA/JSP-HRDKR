@@ -99,3 +99,63 @@ function Vote_Validate1() {
 function ok(){
 	alert('환자 DATA가 정상적으로 저장되었습니다.');
 }
+
+function validate(){
+	// checked의 짝꿍은 false입니다~
+	let P_NO = document.getElementById('P_NO');
+	let T_CODE = document.getElementById('T_CODE');
+	let T_SDATE = document.getElementById('T_SDATE');
+	let T_STATUS1 = document.getElementById('T_STATUS1').checked;
+	let T_STATUS2 = document.getElementById('T_STATUS2').checked;
+	let T_LDATE = document.getElementById('T_LDATE');
+	let T_RESULT1 = document.getElementById('T_RESULT1').checked;
+	let T_RESULT2 = document.getElementById('T_RESULT2').checked;
+	let T_RESULT3 = document.getElementById('T_RESULT3').checked;
+	
+	if(P_NO.value === ""){
+		alert('환자코드를 입력하세요!');
+		P_NO.focus();
+		return false;
+	}
+	
+	if(T_CODE.value === "value"){
+		alert('검사명을 선택하세요!');
+		T_CODE.focus();
+		return false;
+	}
+	
+	if(T_SDATE.value === ""){
+		alert('검사시작일을 입력하세요!');
+		T_SDATE.focus();
+		return false;
+	}
+	
+	if(T_STATUS1 === false && T_STATUS2 === false){
+		alert('검사상태를 선택하세요!');
+		T_SDATE.focus();
+		return false;
+	}
+	
+	if(T_LDATE.value === ""){
+		alert('검사 완료일을 입력하세요!');
+		T_LDATE.focus();
+		return false;
+	}
+	
+	if(T_RESULT1 === false && T_RESULT2 === false && T_RESULT3 === false){
+		alert('검사 결과를 선택하세요!');
+		T_LDATE.focus();
+		return false;
+	}
+	mansaOK();
+	return true;
+}
+function mansaOK(){
+	alert('정상적으로 등록되었습니다!');
+}
+
+function rewrite(){
+	alert('모든 데이터를 삭제하고 처음부터 다시 입력합니다!');
+	P_NO.focus();
+	return true;
+}
