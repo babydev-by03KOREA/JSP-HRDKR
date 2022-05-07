@@ -28,8 +28,8 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
-		<h2><b>홈쇼핑 회원 등록</b></h2><br/>
-		<form action="MemberInsertPro.jsp" method="post" onsubmit="return validate();">
+		<h2><b>회원정보 수정</b></h2><br/>
+		<form action="MemberModifyPro.jsp" method="post" onsubmit="return validate();">
 			<table border="1">
 		<%
 			Connection con = null;
@@ -38,58 +38,60 @@
 			ResultSet rs = null;
 			try{
 				con = DBConnect.getConnection();
-				sql = "SELECT TRIM(MAX(CUSTNO)+1) AS MX FROM MEMBER_TBL_02";
+				sql = "SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, JOINDATE, GRADE, CITY FROM MEMBER_TBL_02";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
-				rs.next();
+				while(rs.next()){
 		%>
 				<tr>
 					<th>회원번호(자동발생)</th>
-					<td align="left"><input type="text" id="custno" name="custno" readonly="readonly" value="<%=rs.getInt("MX")%>"/></td>
+					<td align="left"><input type="text" id="custno" name="custno" readonly="readonly" value="<%=rs.getInt("CUSTNO")%>"/></td>
 				</tr>
-		<%
-			}catch(Exception e){
-				System.out.println("You're MembrList AutoIncreeseMent was denide for "+e);
-			}finally{ // 자원반납
-				try{
-					if(con != null){con.close();}
-					if(pstmt != null){pstmt.close();}
-					if(rs != null){rs.close();}
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-			}
-		%>
+		
 				<tr>
 					<th>회원성명</th>
-					<td align="left"><input type="text" id="custname" name="custname"/></td>
+					<td align="left"><input type="text" id="custname" name="custname" value="<%=rs.getString("CUSTNAME")%>"/></td>
 				</tr>
 				<tr>
 					<th>회원전화</th>
-					<td align="left"><input type="text" id="phone" name="phone" /></td>
+					<td align="left"><input type="text" id="phone" name="phone" value="<%=rs.getString("PHONE")%>"/></td>
 				</tr>
 				<tr>
 					<th>회원주소</th>
-					<td align="left"><input type="text" id="address" name="adddress" /></td>
+					<td align="left"><input type="text" id="address" name="adddress" value="<%=rs.getString("ADDRESS")%>"/></td>
 				</tr>
 				<tr>
 					<th>가입일자</th>
-					<td align="left"><input type="text" id="joindate" name="joindate"/></td>
+					<td align="left"><input type="text" id="joindate" name="joindate" value="<%=rs.getString("JOINDATE")%>"/></td>
 				</tr>
 				<tr>
 					<th>고객등급[A:VIP, B:일반, C:직원]</th>
-					<td align="left"><input type="text" id="grade" name="grade"/></td>
+					<td align="left"><input type="text" id="grade" name="grade" value="<%=rs.getString("GRADE")%>"/></td>
 				</tr>
 				<tr>
 					<th>도시코드</th>
-					<td align="left"><input type="text" id="city" name="city"/></td>
+					<td align="left"><input type="text" id="city" name="city" value="<%=rs.getString("CITY")%>"/></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="등록"/>
+						<input type="submit" value="수정"/>
 						<input type="button" value="조회" onclick="location.href='MemberList.jsp';" />
 					</td>
 				</tr>
+				<%	
+					}
+					}catch(Exception e){
+						System.out.println("You're MembrList AutoIncreeseMent was denide for "+e);
+					}finally{ // 자원반납
+						try{
+							if(con != null){con.close();}
+							if(pstmt != null){pstmt.close();}
+							if(rs != null){rs.close();}
+						}catch(SQLException e){
+							e.printStackTrace();
+						}
+					}
+				%>
 			</table>
 		</form>
 	</section>
