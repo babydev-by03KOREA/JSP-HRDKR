@@ -32,45 +32,52 @@
 		<form action="MemberModifyPro.jsp" method="post" onsubmit="return validate();">
 			<table border="1">
 		<%
+			request.setCharacterEncoding("UTF-8");
+			int CUSTNO = Integer.parseInt(request.getParameter("CUSTNO"));
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			String sql = null;
 			ResultSet rs = null;
 			try{
 				con = DBConnect.getConnection();
-				sql = "SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, JOINDATE, GRADE, CITY FROM MEMBER_TBL_02";
+				sql = "SELECT *";
+				sql += " FROM MEMBER_TBL_02 WHERE CUSTNO = ?";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, CUSTNO);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 		%>
+		<%-- 우리는 DB명을 대문자로 써서 넘겼어요 그럼 값을 받는 친구도 대문자로 작성해야합니다.
+			이 에러때문에 알바하는데 머리털 다 빠질뻔.. 그냥 id, name 모두 대문자로 작성합니다. 
+			그리고 이 칸에서는 모든 회원에 값을 받는것이 아닌 회원하나 값만 필요하기에, while문을 사용하지 안습니다.--%>
 				<tr>
-					<th>회원번호(자동발생)</th>
-					<td align="left"><input type="text" id="custno" name="custno" readonly="readonly" value="<%=rs.getInt("CUSTNO")%>"/></td>
+					<th>회원번호</th>
+					<td align="left"><input type="text" id="CUSTNO" name="CUSTNO" readonly="readonly" value="<%=rs.getInt("CUSTNO")%>"/></td>
 				</tr>
 		
 				<tr>
 					<th>회원성명</th>
-					<td align="left"><input type="text" id="custname" name="custname" value="<%=rs.getString("CUSTNAME")%>"/></td>
+					<td align="left"><input type="text" id="CUSTNAME" name="CUSTNAME" value="<%=rs.getString("CUSTNAME")%>"/></td>
 				</tr>
 				<tr>
 					<th>회원전화</th>
-					<td align="left"><input type="text" id="phone" name="phone" value="<%=rs.getString("PHONE")%>"/></td>
+					<td align="left"><input type="text" id="PHONE" name="PHONE" value="<%=rs.getString("PHONE")%>"/></td>
 				</tr>
 				<tr>
 					<th>회원주소</th>
-					<td align="left"><input type="text" id="address" name="adddress" value="<%=rs.getString("ADDRESS")%>"/></td>
+					<td align="left"><input type="text" id="ADDRESS" name="ADDRESS" value="<%=rs.getString("ADDRESS")%>"/></td>
 				</tr>
 				<tr>
 					<th>가입일자</th>
-					<td align="left"><input type="text" id="joindate" name="joindate" value="<%=rs.getString("JOINDATE")%>"/></td>
+					<td align="left"><input type="text" id="JOINDATE" name="JOINDATE" value="<%=rs.getDate("JOINDATE")%>"/></td>
 				</tr>
 				<tr>
 					<th>고객등급[A:VIP, B:일반, C:직원]</th>
-					<td align="left"><input type="text" id="grade" name="grade" value="<%=rs.getString("GRADE")%>"/></td>
+					<td align="left"><input type="text" id="GRADE" name="GRADE" value="<%=rs.getString("GRADE")%>"/></td>
 				</tr>
 				<tr>
 					<th>도시코드</th>
-					<td align="left"><input type="text" id="city" name="city" value="<%=rs.getString("CITY")%>"/></td>
+					<td align="left"><input type="text" id="CITY" name="CITY" value="<%=rs.getString("CITY")%>"/></td>
 				</tr>
 				<tr>
 					<td colspan="2">

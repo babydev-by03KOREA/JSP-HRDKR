@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원정보 조회/수정</title>
+<title>회원매출조회</title>
 <style>
 	section{
 		position: fixed;
@@ -27,17 +27,14 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
-	<h2><b>회원목록 조회/수정</b></h2><br/>
+	<h2><b>회원매출조회</b></h2><br/>
 	<form>
 		<table border="1">
 			<tr>
 				<th>회원번호</th>
 				<th>회원성명</th>
-				<th>전화번호</th>
-				<th>주소</th>
-				<th>가입일자</th>
 				<th>고객등급</th>
-				<th>거주지역</th>
+				<th>매출</th>
 			</tr>
 		<%
 			request.setCharacterEncoding("UTF-8");
@@ -47,47 +44,48 @@
 			ResultSet rs = null;
 			try{
 				con = DBConnect.getConnection();
-				sql = "SELECT CUSTNO, CUSTNAME, PHONE, TO_CHAR(JOINDATE,'YYYY-DD-MM') AS JDATE, ADDRESS,";
-				sql += "GRADE, CITY FROM MEMBER_TBL_02 ORDER BY CUSTNO";
+				sql = "SELECT MEMBER_TBL_02.CUSTNO, MEMBER_TBL_02.CUSTNAME, MEMBER_TBL_02.GRADE,";
+				sql += " SUM(MONEY_TBL_02.PCOST*MONEY_TBL_02.AMOUNT) AS HAP";
+				sql += " FROM MEMBER_TBL_02";
+				sql += " INNER JOIN MONEY_TBL_02";
+				sql += " ON MEMBER_TBL_02.CUSTNO = MONEY_TBL_02.CUSTNO";
+			 	sql += " GROUP BY MEMBER_TBL_02.CUSTNO,MEMBER_TBL_02.GRADE, MEMBER_TBL_02.CUSTNAME";
+				sql += " ORDER BY SUM(MONEY_TBL_02.PCOST*MONEY_TBL_02.AMOUNT) DESC";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 		%>
 			<tr>
-				<td><a href="ModifyList.jsp?CUSTNO=<%=rs.getInt("CUSTNO")%>"><%=rs.getInt("CUSTNO") %></a></td>
+				<td><%=rs.getInt("CUSTNO") %></td>
 				<td><%=rs.getString("CUSTNAME") %></td>
-				<td><%=rs.getString("PHONE") %></td>
-				<td><%=rs.getString("JDATE") %></td>
-				<td><%=rs.getString("ADDRESS") %></td>
 				<td>
-				<%
-					String VVIP = rs.getString("GRADE");
-					String AVIP = "A";
-					String BVIP = "B";
-					String CVIP = "C";
-					String KVIP = "VIP";
-					String KBVIP = "일반";
-					String KCVIP = "직원";
-					if(AVIP.equals(VVIP)){
-						out.println(KVIP);
-					}else if(BVIP.equals(VVIP)){
-						out.println(KBVIP);
-					}else if(CVIP.equals(VVIP)){
-						out.println(KCVIP);
-					}
-				%>
+					<%
+						String ABC = rs.getString("GRADE");
+						String A = "A";
+						String B = "B";
+						String C = "C";
+						String VIP = "VIP";
+						String General = "일반";
+						String CREW = "직원";
+						if(A.equals(ABC)){
+							out.println(VIP);
+						}else if(B.equals(ABC)){
+							out.println(General);
+						}else if(C.equals(ABC)){
+							out.println(CREW);
+						}
+					%>
 				</td>
-				<td><%=rs.getString("CITY") %></td>
+				<td><%=rs.getString("HAP") %></td>
 			</tr>
 		<%
 				}
 			}catch(Exception e){
-				System.out.println("You're MemberList Commands was denied for "+e);
+				System.out.println("You're AmountList Commands was denied for "+e);
 			}finally{
 				try{
 					if(con != null){con.close();}
 					if(pstmt != null){pstmt.close();}
-					if(rs != null){rs.close();}
 				}catch(SQLException e){
 					e.printStackTrace();
 				}

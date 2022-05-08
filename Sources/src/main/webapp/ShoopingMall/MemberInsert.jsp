@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<th>회원주소</th>
-					<td align="left"><input type="text" id="address" name="adddress" /></td>
+					<td align="left"><input type="text" id="address" name="address" /></td>
 				</tr>
 				<tr>
 					<th>가입일자</th>

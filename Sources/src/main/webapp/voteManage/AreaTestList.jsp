@@ -45,7 +45,7 @@
 			ResultSet rs = null;
 			// Class.forName이나 url은 외우는게 아닙니다.. 시험지에 다 나와요.. 가끔가다 이상한거 외우는애들 꼭 있음..
 			// 다만 java.sql에 해당하는 객체들의 사용법은 숙지해두세요.
-			String url = "jdbc:oracle:thin://@localhost:1521/xe";
+			String url = "jdbc:oracle:thin://@180.68.32.70:1521/xe";
 			String pid = "system";
 			String pwd = "1234";
 			try{

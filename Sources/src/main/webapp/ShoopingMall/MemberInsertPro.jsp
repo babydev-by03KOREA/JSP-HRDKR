@@ -9,13 +9,13 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		int custno = Integer.parseInt(request.getParameter("custno").trim());
-		String custname = request.getParameter("custname").trim();
-		String phone = request.getParameter("phone").trim();
-		String address = request.getParameter("address").trim();
-		String joindate = request.getParameter("joindate").trim();
-		String grade = request.getParameter("grade").trim();
-		String city = request.getParameter("city").trim();
+		int custno = Integer.parseInt(request.getParameter("custno"));
+		String custname = request.getParameter("custname");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String joindate = request.getParameter("joindate");
+		String grade = request.getParameter("grade");
+		String city = request.getParameter("city");
 	%>
 	<%
 		Connection con = null;
