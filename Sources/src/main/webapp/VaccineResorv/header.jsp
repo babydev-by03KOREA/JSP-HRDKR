@@ -35,8 +35,8 @@
 	</header>
 	<nav>
 		<a href="VaccineResorve.jsp">백신접종예약</a> &nbsp; &nbsp;
-		<a href="#">백신예약조회</a> &nbsp; &nbsp;
-		<a href="#">접종인원통계</a> &nbsp; &nbsp;
+		<a href="ResorveSearch.jsp">백신예약조회</a> &nbsp; &nbsp;
+		<a href="HospitalAmount.jsp">접종인원통계</a> &nbsp; &nbsp;
 		<a href="index.jsp">홈으로</a>
 	</nav>
 </body>

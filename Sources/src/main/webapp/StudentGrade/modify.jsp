@@ -32,8 +32,8 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>학생 종합정보 수정</b></h2><br/>
-		<form action="modifyPro.jsp" method="post" onsubmit="return validate2();"> 
-		<%-- onsubmit, onclick 사용 시, return 'functioin Name'+'()'+';' 기억할것!! --%>
+		<form action="modifyPro.jsp" method="post" onsubmit="return validate2()"> 
+		<%-- onsubmit, onclick 사용 시, return 'functioin Name'+'()' 기억할것!! --%>
 		<table border="1">
 		<%
 			request.setCharacterEncoding("UTF-8");

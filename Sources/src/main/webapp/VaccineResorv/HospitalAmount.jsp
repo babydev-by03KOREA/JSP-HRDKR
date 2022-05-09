@@ -56,7 +56,8 @@
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
-					System.out.println(rs.getInt("HAP"));
+					// 개발자 콘솔 확인용
+					/* System.out.println(rs.getInt("HAP")); */
 		%>
 		
 				<tr>
@@ -68,7 +69,6 @@
 				}
 		%>
 		<%	
-			sql2 = "SELECT SUM(COUNT(RESVNO)) OVER() AS HAP FROM TBL_VACCRESV_202108";
 			rs2 = pstmt.executeQuery();
 			rs2.next();
 		%>

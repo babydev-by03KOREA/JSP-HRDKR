@@ -31,7 +31,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 	<h2><b>학생등록</b></h2><br/>
-		<form action="insertInfoPro.jsp" method="post" name="info" onsubmit="return validate();">
+		<form action="insertInfoPro.jsp" method="post" name="info" onsubmit="return validate()">
 			<table border="1">
 				<tr>
 					<td>학번</td>

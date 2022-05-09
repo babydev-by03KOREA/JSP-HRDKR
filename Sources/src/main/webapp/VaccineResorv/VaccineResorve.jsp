@@ -29,7 +29,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>백신접종예약</b></h2><br/>
-		<form action="ResorvePro.jsp" method="post" onsubmit="return validate1();">
+		<form action="ResorvePro.jsp" method="post" onsubmit="return validate1()">
 			<table border="1">
 				<tr>
 					<td>접종 예약번호</td>

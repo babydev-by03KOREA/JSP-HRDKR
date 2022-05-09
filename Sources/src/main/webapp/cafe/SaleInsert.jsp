@@ -35,7 +35,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>판매등록</b></h2><br/>
-		<form action="salePro.jsp" method="post" onsubmit="return validate1	();">
+		<form action="salePro.jsp" method="post" onsubmit="return validate1()">
 		<table border="1">
 			<tr>
 				<td>판매번호</td>

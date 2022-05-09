@@ -35,7 +35,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>검사결과입력</b></h2><br/>
-		<form action="ResultInsertPro.jsp" method="post" onsubmit="return validate();">
+		<form action="ResultInsertPro.jsp" method="post" onsubmit="return validate()">
 			<table border="1">
 				<tr>
 					<td>환자코드</td>

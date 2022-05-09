@@ -51,3 +51,12 @@ function restart(){
 	alert('정보를 지우고 처음부터 다시 입력합니다!');
 	return true;
 }
+function validateS(){
+	let Query = document.getElementById('Query');
+	if(Query.value === ""){
+		alert('접종 예약번호가 입력되지 않았습니다.');
+		Query.focus();
+		return false;
+	}
+	return true;
+}
