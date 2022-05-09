@@ -32,7 +32,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<section>
 		<h2><b>회원검색</b></h2><br/>
-		<form action="<%=request.getContextPath()%>/SearchPro.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/Search/SearchPro.jsp" method="post">
 			<select name="opt">
 				<option value="userid">아이디</option>
 				<option value="usernm">회원이름</option>
